@@ -51,20 +51,25 @@ The main work of this project can be divided into three parts: firstly, the spee
 ```
 ### preprocessing
 Pre-process DAIC-WOZ dataset and extract audio features: Linear Prediction Coefficients (LPC), Short-time Fourier Transform (STFT), Filter Bank, Mel-Frequency Cepstrum (MFCC).
+
 ``segmentation.py``: Silent segment removal: The information contained in the speech signal after removing the silent segment is more concentrated and compact, which makes it more suitable for speech analysis tasks than the sparse original speech signal.
 ### split
 Re-split training/validating/testing set for each audio feature.
 ### sampling
 The problem to be solved in this section is the unbalanced dataset and the inconsistency of the data. The final solution adopted is to resample the speech data after removing the silent segments.
+
 We consider segmenting the whole speech into 8 segments (based on PHQ-9 questionnaire), taking random 10 bars of speech features in each of these 8 segments (here we take 4 seconds), and combining these 8 segments into a three-dimensional feature matrix in order, which is used in machine learning classification and training.
 ### traditional
 Traditional machine learning strategies for comparison & audio feature screening. We chose Random Forest (RF) & CNN.
 ### self-supervised
 Core application. The auxiliary task we chose was to compare the similarity between two sets of features, and a binary classification task was designed; in terms of model design, for the convenience of Fine-tuning afterwards, the metamodel was still adopted similar to the previous convolutional neural network, on which a shared layer was designed to accomplish the similarity metric.
+
 ```pre-train-perf.py```: auxiliary task model
-`  
-![Auxiliary task model](image/pre-train-model.png)`
+
+![Auxiliary task model](image/pre-train-model.png)
+
 ```cnn-perf.py```: self-supervised learning model
-`![Self-supervised learning model](image/cnn-model.png)`
+
+![Self-supervised learning model](image/cnn-model.png)
 ### images
 Image output in this project.
