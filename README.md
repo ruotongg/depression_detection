@@ -11,7 +11,9 @@ The main work of this project can be divided into three parts: firstly, the spee
 ## Structure
 ```
 ├─images
+│      cnn-model.png
 │      cnn.png
+│      pre-train-model.png
 │      pre-train.png
 │      pretrain_1_fbank.png
 │      pretrain_1_lpc.png
@@ -66,10 +68,10 @@ Core application. The auxiliary task we chose was to compare the similarity betw
 
 ```pre-train-perf.py```: auxiliary task model
 
-![Auxiliary task model](image/pre-train-model.png)
+![Auxiliary task model](images/pre-train-model.png)
 
 ```cnn-perf.py```: self-supervised learning model
 
-![Self-supervised learning model](image/cnn-model.png)
+![Self-supervised learning model](images/cnn-model.png)
 ### images
 Image output in this project.
